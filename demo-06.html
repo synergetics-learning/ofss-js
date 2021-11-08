@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 06 : Objects </title>
+    <style>
+    thead{
+        background-color: bisque;
+        padding: 3px;
+    }
+    tbody{
+        background-color: azure;
+        padding: 5px;
+        
+    }
+    table{
+        border: 1pt solid bisque;
+    }
+    </style>
+    <script>
+    player1 = new Object();
+    player1.id = 101;
+    player1.firstName = "Rohit" ;
+    player1.lastName = "Sharma" ;   
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="data">
+                
+            </tr>
+        </tbody>
+        
+    </table>
+</body>
+<script>
+row = document.getElementById("data");        
+console.log("The element found :"+ typeof(row));
+str = "<td>"+player1.id+"</td><td>"+player1.firstName+"</td><td>"+player1.lastName+"</td>";
+console.log(str);
+row.innerHTML = str;
+</script>
+</html>
