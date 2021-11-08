@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    
+    <title>Demo 08 : Functions</title>
+</head>
+<body>
+    <input type="text" id="ans" readonly/>
+
+    <script>
+        // Declaring a function that uses another function as it's parameter
+        // At the time of declaration, we DONT know what this "action" function is?
+        function doSum(x,y,action){
+            // action was reference to function
+            action(x+y);
+        }
+
+        // Option 1 : with single parameter
+        function printConsole(a){
+            console.log("Value :"+a);
+        }
+
+        // Option 2 : with single parameter
+        function printAlert(a){
+            alert("Value is "+a);
+        }
+
+        //create function printField() where, answer should be inserted into text field id "ans" (Replace innerHTML with value)
+        doSum(100,10,printConsole);
+    </script>
+</body>
+</html>
