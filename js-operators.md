@@ -12,6 +12,7 @@ Symboles | Description  | Usage
 \<=  | Lesser or Equal | x <= 5 
 ==  | Equal value | x == 5
 === | Equal value and type | x === 5
+!== | Equal value but NOT type | x !== 5 (x might be string)
 
 ## Logical Operators
 

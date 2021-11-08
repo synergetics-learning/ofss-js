@@ -2,13 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+    <style>
+        b {
+            background-color: burlywood;
+            border-radius: 3px 5px;
+            padding: 2px;
+            border: 1px solid black;
+        }
+    </style>
     <title>Demo 03 : Operators</title>
     <script src="demo-03.js">
         // KEEP THIS EMPTY !!
     </script>
 </head>
 <body>
-    
+    <script>
+        // Test the == and === operators
+        x = "10"; // x contains "10" as string
+        y = 10 ; // y contains 10 as number
+        document.write("<p>Using <b>==</b> operator " + (x==y)+"</p>");
+        document.write("<p>Using <b>===</b> operator " + (x===y)+"</p>");
+        document.write("<p>Using <b>!==</b> operator " + (x!==y)+"</p>");
+        x = 10;
+        document.write("<p>Using <b>!==</b> operator " + (x!==y)+"<br/></p>");
+        document.write("<b>!==</b> is false as the TYPE is SAME, and operator expected different type but same value")
+    </script>
 </body>
 </html>
