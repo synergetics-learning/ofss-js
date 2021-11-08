@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Demo 02 : Variables</title>
+
+    <script>
+    // VAR for global variable and LET for local variable
+    // Outer block
+    x = 100;        // Local variable 
+    var y = 1000;   // Explicitly declared GLOBAL
+    { // Inner Block
+        let x = 200;  // explicitly declaring LOCAL variable!
+        var y = 3000; // Global Variable even when declared inside INNER block!
+        alert("Value of x "+x+", y "+y);
+        { // The CHILD block has access to LOCAL variables of PARENT block
+            alert("Value of x from 2 level down "+x);
+        }
+    } //all local variables are RELEASED   
+
+    alert("Value of x "+x+", y "+y);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

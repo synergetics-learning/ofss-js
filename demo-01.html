@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 01</title>
+    <script type="text/javascript">
+    // JS is loosely typed language.   
+    // Data types:
+    // number, string, boolean, object
+    // number, string and boolean are DERIVED from object ! 
+    var x = 100;
+    // var would create a GLOBAL variable and when "var" is absent,
+    // it creates LOCAL variable.
+    document.write("Value of X :"+x +" is of type "+typeof(x)+" <br/>");    
+    </script>
+</head>
+<body>
+    <!-- In HTML5, the TYPE attribute is optional for "script" tag ! -->
+    <script >
+    x = "abc";    
+    document.write("Value of X :"+x +" is of type "+typeof(x)+" <br/>");    
+    </script>
+    
+</body>
+    <script>
+    x = new Date();
+    document.write("Value of X :"+x +" is of type "+typeof(x)+" <br/>");    
+    </script>
+</html>
