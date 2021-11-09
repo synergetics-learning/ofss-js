@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EMI Calculator</title>
+    <script>
+        function calc(frm) {
+            let error = "";
+
+            var pamt = frm.pn.value.trim();
+            // Try converting to FLOAT or else Use ZERO
+            pamt = parseFloat(pamt) | 0;
+
+            if (pamt < 10000 || pamt > 1000000) {
+                error += "Principle must be in range 10000 <=> 1000000<br/>";
+            }
+
+            var rate = parseFloat(frm.rt.value.trim()) | 0;
+            if (rate < 2 || rate > 20) {
+                error += "Rate of interest must be in range 2 <=> 20 <br/>";
+            }
+
+            var duration = parseInt(frm.du.value.trim()) | 0;
+            if (duration < 6 || duration > 240) {
+                error += "Duration must be in range 6 <=> 240 <br/>";
+            }
+            if (error.trim().length == 0) {
+                emi = (pamt * rate / 100 / 12) * (Math.pow(1 + rate / 100 / 12, duration)) / (Math.pow(1 + rate / 100 / 12, duration) - 1);
+                document.getElementById("emi").value = emi;
+            } else {
+                document.getElementById("err").innerHTML = error;
+            }
+        }        
+    </script>
+</head>
+
+<body>
+    <h1>EMI Calculator</h1>
+    <form method="get">
+        <table>
+            <tr>
+                <td>Principle Amount</td>
+                <td>
+                    <input type="text" name="pn" required />
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td>Rate of Interest</td>
+                <td>
+                    <input type="text" name="rt" value="5.5" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Duration in months</td>
+                <td>
+                    <input type="text" name="du" value="12" required />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Calculate" onclick="calc(this.form)" />
+                </td>
+                <td>
+                    <input type="text" id="emi" readonly />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="err"></div>
+</body>
+
+</html>
