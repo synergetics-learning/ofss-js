@@ -19,15 +19,13 @@
 
     accList = new Array();
     
-    
     function loadData(){
     str = localStorage.getItem("accList");
     console.log("JSON String "+str); 
-    arr = JSON.parse(str); 
-    console.log( "JS Array" +arr);
-    if(arr != null){ // If the list from localStorage is NOT NULL
-        accList = [].concat(arr); //Add the items from localStorage to this variable
+    if(str !=null){
+        accList = JSON.parse(str); 
     }
+
     rows = "";
     for(i=0;i<accList.length;i++){
          rows += "<tr><td>"+accList[i].accNo+"</td><td>"+accList[i].holderName+"</td><td>"+accList[i].accType+"</td><td>"+accList[i].amount+"</td></tr>";
@@ -40,7 +38,6 @@
         accname = fm.accname.value.trim() ;
         acctype = fm.acctype.value;
         amt = parseFloat(fm.amt.value) | 0;
-
         accList.push(new Account(accno,accname,amt,acctype));
         localStorage.setItem("accList", JSON.stringify(accList) );    
         loadData();
