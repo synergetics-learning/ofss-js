@@ -33,6 +33,17 @@
     document.getElementById("data").innerHTML = rows;
     }
 
+    function addRow(fm){
+        accno = parseInt(fm.accno.value) | 0 ;
+        accname = fm.accname.value.trim() ;
+        acctype = fm.acctype.value;
+        amt = parseFloat(fm.amt.value) | 0;
+
+        accList.push(new Account(accno,accname,amt,acctype));
+        
+        loadData();
+    }
+
     </script>
 </head>
 <body>
@@ -50,8 +61,35 @@
         </tbody>
     </table>
     <input type="button" value="Load Data" onclick="loadData()" />
-    <script>
+    <form>
+        <table>
+            <tr>
+                <td>Account Number</td>
+                <td><input type="number" name="accno" /></td>
+            </tr>
+            <tr>
+                <td>Account Holder name</td>
+                <td><input type="text" name="accname" /></td>
+            </tr>
+            <tr>
+                <td>Account Type</td>
+                <td><input type="radio" name="acctype" value="SB" checked/>Savings <input type="radio" name="acctype" value="CB" />Current </td>
+            </tr>
+            <tr>
+                <td>Account Balance</td>
+                <td><input type="number" name="amt" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="button" value="Add" onclick="addRow(this.form)" />
+                </td>
+            
+            </tr>
+            
+
+            
+        </table>
+    </form>
     
-    </script>
 </body>
 </html>

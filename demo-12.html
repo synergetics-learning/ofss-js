@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 12 : JSON Parsing</title>
+    <script>
+        function update(){
+            str = document.getElementById("txt").value;
+            x = JSON.parse(str);
+            document.getElementById("fn").innerHTML = x.firstName;
+            document.getElementById("ln").innerHTML = x.lastName;
+        }
+    </script>
+</head>
+<body>
+    PLease update the JSON String in below text area<br/>
+    <textarea id="txt" onblur="update()" cols="50" rows="3" >{ "firstName" : "Mahendra", "lastName": "Shinde"}
+    </textarea>
+
+    <table>
+        <tr>
+            <td> First Name: </td>
+            <td id="fn"></td>
+        </tr>
+        <tr>
+            <td> Last Name: </td>
+            <td id="ln"></td>
+        </tr>
+
+    </table>
+</body>
+</html>

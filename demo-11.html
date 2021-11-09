@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <script>
+    // Call-back functions
+    // I want "Web-browser" to invoke this function on certain event
+    function callMe(element,col){
+        element.style.color = col;
+    }    
+    </script>
+</head>
+<body onclick="fun2()">
+    <h1 onmouseover="callMe(this,'red')"  onmouseout="callMe(this,'black')">Click Me!</h1>
+    <p onmouseover="callMe(this,'red')"  onmouseout="callMe(this,'black')">Click Me!</p>
+
+    <input id="a1" onfocus="fun1()" onblur="fun3()"/>
+    <input id="a2" onfocus="fun1()"/>
+    <input id="a3"/>
+    <input id="a4"/>
+
+    <script>
+      function fun1(){ 
+          // "event" is implicit variable available in all event-handler functions
+            event.target.style.borderColor='red';
+            console.log("Focus gained on "+event.target.id);
+       }
+       function fun2(){
+           tg = event.target.tagName;
+           console.log("You just clicked on "+tg);
+       }
+       function fun3(){ 
+          // "event" is implicit variable available in all event-handler functions
+            event.target.style.borderColor='black';
+            if(event.target.value == '')
+                alert("Please type something here ....?");
+            console.log("Focus lost on "+event.target.id);
+       }
+    </script>
+
+</body>
+</html>
