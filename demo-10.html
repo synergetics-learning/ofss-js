@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+
+    <script>
+    // constructor function : used for building objects !
+    function Account(accNo, holderName, balance, accType){
+        // Initialize the MEMBER PROPERTIES using "this." as prefix for them
+        this.accNo = accNo;
+        this.holderName = holderName;
+        //Member property name MAY NOT match with function parameter
+        this.amount = balance;
+        //But using same property name is MORE CONVENIENT !
+        this.accType = accType;
+    }    
+
+    accList = new Array();
+    
+    acc1 = new Account(1001,'Dharmendra',10000,'SB');
+    acc2 = new Account(1002,'Jeetendra',23000,'SB');
+
+    accList.push(acc1);
+    accList.push(acc2);
+
+    function loadData(){
+    rows = "";
+    for(i=0;i<accList.length;i++){
+         rows += "<tr><td>"+accList[i].accNo+"</td><td>"+accList[i].holderName+"</td><td>"+accList[i].accType+"</td><td>"+accList[i].amount+"</td></tr>";
+    } 
+    document.getElementById("data").innerHTML = rows;
+    }
+
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Account Number</td>
+                <td>Account Holder name</td>
+                <td>Type</td>
+                <td>Balance</td>
+            </tr>
+        </thead>
+        <tbody id="data">
+            
+        </tbody>
+    </table>
+    <input type="button" value="Load Data" onclick="loadData()" />
+    <script>
+    
+    </script>
+</body>
+</html>
