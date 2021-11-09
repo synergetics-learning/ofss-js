@@ -28,9 +28,16 @@
 
     rows = "";
     for(i=0;i<accList.length;i++){
-         rows += "<tr><td>"+accList[i].accNo+"</td><td>"+accList[i].holderName+"</td><td>"+accList[i].accType+"</td><td>"+accList[i].amount+"</td></tr>";
+         rows += "<tr><td>"+accList[i].accNo+"</td><td>"+accList[i].holderName+"</td><td>"+accList[i].accType+"</td><td>"+accList[i].amount+"</td><td><a href='#' onclick='deleteRec("+i+")'>Delete</a></td></tr>";
     } 
     document.getElementById("data").innerHTML = rows;
+    }
+
+    function deleteRec(index){
+        //remove ONE element at given index
+        accList.splice(index,1);
+        localStorage.setItem("accList",JSON.stringify(accList));
+        loadData();
     }
 
     function addRow(fm){
@@ -53,6 +60,7 @@
                 <td>Account Holder name</td>
                 <td>Type</td>
                 <td>Balance</td>
+                <td>Actions</td>
             </tr>
         </thead>
         <tbody id="data">
