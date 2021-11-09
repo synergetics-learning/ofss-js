@@ -19,13 +19,14 @@
 
     accList = new Array();
     
-    acc1 = new Account(1001,'Dharmendra',10000,'SB');
-    acc2 = new Account(1002,'Jeetendra',23000,'SB');
-
-    accList.push(acc1);
-    accList.push(acc2);
-
+    
     function loadData(){
+    str = localStorage.getItem("accList");
+    arr = JSON.parse(str);
+    console.log(arr);
+    if(arr != null){ // If the list from localStorage is NOT NULL
+        accList = [].concat(arr); //Add the items from localStorage to this variable
+    }
     rows = "";
     for(i=0;i<accList.length;i++){
          rows += "<tr><td>"+accList[i].accNo+"</td><td>"+accList[i].holderName+"</td><td>"+accList[i].accType+"</td><td>"+accList[i].amount+"</td></tr>";
@@ -40,7 +41,7 @@
         amt = parseFloat(fm.amt.value) | 0;
 
         accList.push(new Account(accno,accname,amt,acctype));
-        
+        localStorage.setItem("accList", JSON.stringify(accList) );    
         loadData();
     }
 

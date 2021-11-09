@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Demo 14 : sessionStorage</title>
+
+    <script>
+        //Window is Loaded / Opened
+        window.onload = getName;
+
+        function getName(){
+            //get the value stored in sessionStorage
+            message = sessionStorage.getItem("user");
+            usr = JSON.parse(message);
+            document.getElementById("msg").innerHTML = usr.firstName +" "+usr.lastName;
+        }
+        function setname(frm){
+            name1 = frm.fn.value.trim();
+            name2 = frm.ln.value.trim();
+            usr = new Object();
+            usr.firstName = name1;
+            usr.lastName = name2;
+            str = JSON.stringify(usr);
+            console.log("JSON String "+str);
+            sessionStorage.setItem("user",str);
+            getName();
+        }
+    </script>
+</head>
+<body>
+    <h1>localStorage</h1>
+    <p>Storage accessible to website from web-browser. Data stored in JSON String format. Data is retained even after browser window is closed and re-opened!
+    localStorage depends on webserver's hostname.     
+    </p>
+    <h1>sessionStorage</h1>
+    <p>Storage accessible to website from web-browser. Data stored in JSON String format. Data is lost after browser window is closed.
+    sessionStorage depends on webserver's hostname.     
+    </p>
+    <h1>Hello <span id="msg"></span></h1>
+    <form>
+        Enter your name : <input name="fn" /><input name="ln" /> <input type="button" value="Save" onclick="setname(this.form)" />
+    </form>
+</body>
+</html>
