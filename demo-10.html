@@ -22,8 +22,9 @@
     
     function loadData(){
     str = localStorage.getItem("accList");
-    arr = JSON.parse(str);
-    console.log(arr);
+    console.log("JSON String "+str); 
+    arr = JSON.parse(str); 
+    console.log( "JS Array" +arr);
     if(arr != null){ // If the list from localStorage is NOT NULL
         accList = [].concat(arr); //Add the items from localStorage to this variable
     }
