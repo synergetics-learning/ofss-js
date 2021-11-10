@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+    var conn1 = new WebSocket('ws://ws.ifelse.io');
+    
+    conn1.onopen = function(){
+        document.getElementById("out").innerHTML = "Connection Opened <br/>";
+        conn1.send("Hello World");
+        document.getElementById("out").innerHTML += "Message sent !<br/>";
+    }
+
+    conn1.onclose = function(){
+
+    }
+    conn1.onerror = function(e){
+        document.getElementById("err").innerHTML += e; 
+    }
+
+    conn1.onmessage = function(msg){
+        document.getElementById("out").innerHTML += "Got message from server "+ msg.data+"<br/>";
+    }
+    function sendMessage(){
+        msg = document.forms[0].txt1.value;
+        conn1.send(msg);
+    }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Web Socket Demo</h1>
+    <div id="out"></div>
+    <did id="err"></did>
+    <form>
+    <input id="txt1" /><input type="button" value="Send" onclick="sendMessage()"/>
+    </form>
+</body>
+</html>
