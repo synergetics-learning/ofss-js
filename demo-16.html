@@ -32,9 +32,14 @@
     function loadDetails(i){
         currentUser = usList[i];
         //alert(currentUser.name);
-        document.getElementById("addr").innerHTML = JSON.stringify(currentUser.address) ;
+        address = currentUser.address.street + ", <br/>";
+        address += currentUser.address.suite + ", <br/>";
+        address += currentUser.address.city + ", <br/>";
+        address += currentUser.address.zipcode + ". <br/>";
+        document.getElementById("addr").innerHTML = address; 
         document.getElementById("phone").innerHTML = currentUser.phone;
         document.getElementById("cmp").innerHTML = currentUser.company.name;
+        
     }
     </script>
 
@@ -45,20 +50,23 @@
     }
     tr {
         vertical-align: top;
+        
     }
     td {
-        padding: 5px;
+        padding:10px;
+        border-bottom: 1pt dotted gray;
     }
     
 
     </style>
 </head>
 <body>
+   
     <table  cellspacing="0" border="0">
         <tr>
             <td>
                   <!-- Nested Table for List of Users -->  
-                  <table>
+                  <table cellspacing="0">
                     <thead>
                         <tr>
                             <td>User ID</td>
