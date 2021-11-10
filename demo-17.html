@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script>
-    var conn1 = new WebSocket('ws://ws.ifelse.io');
+    var conn1 = new WebSocket('ws://localhost:8001');
     
     conn1.onopen = function(){
         document.getElementById("out").innerHTML = "Connection Opened <br/>";
