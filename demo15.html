@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <script>
+    var xreq  = new XMLHttpRequest();
+    xreq.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            resp = JSON.parse(xreq.responseText);
+            document.forms[0].ip.value = resp.ip;
+        }else{
+            console.log("Ready State : "+this.readyState +", HTTP Response: "+this.status);
+        }
+    };
+    function getip(){
+        xreq.open('GET','https://api.ipify.org/?format=json',true);
+        xreq.send();
+    }  
+
+    </script>
+</head>
+<body>
+    <form>
+    <input type="button" value="Get My IP" onclick="getip()"/>
+    <input type="text" name="ip" readonly/>
+    
+    </form>
+</body>
+</html>
+
