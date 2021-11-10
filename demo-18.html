@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 18 ECMA6 ES6</title>
+    <script>
+    let data1 = [10,20,33,12,10];
+    let data2 = [23,12,45,67];
+
+    function print(d){
+        console.log("Array size :"+d.length);
+        //ES6 for-each loop to iterate an array
+        for(let x of d){
+            console.log(x);
+        }
+    }
+
+    print(data1);
+    print(data2);
+
+    function calcSum(d){
+        let sum = 0;
+        for(let x of d){
+            sum += x;
+        }
+        return sum;
+    }
+
+    console.log("Sum of data1 "+ calcSum(data1));
+    console.log("Sum of data2 "+ calcSum(data2));
+
+    //Arrow function to replace the standard one "calcSum"
+    let doSum = (d) => {let sum = 0;
+        for(let x of d){
+            sum += x;
+        }
+        return sum;
+    };
+
+    //When should i use ARROW ??
+    let count = (d) => d.length;
+    /*
+    function count(d){
+        return d.length;
+    } */   
+
+    console.log("Sum of data1 "+ doSum(data1));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

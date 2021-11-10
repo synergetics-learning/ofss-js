@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <script>
+    class Customer{
+        constructor (customerId, firstName, lastName){
+            this._custId = customerId;
+            this._fname = firstName;
+            this._lname = lastName;
+        }
+
+        get customerId(){ 
+            return this._custId;   
+        }
+        //set customerId(custId)  { this._custId = custId; }
+        get firstName(){
+            return this._fname;
+        } 
+        get lastName(){
+            return this._lname;
+        }
+        // set lastName(lname){
+        //     this._lname = lname;
+        // }
+    }
+    let c1 = new Customer(101,'Tony','Stark');
+    c1.lastName = 'Shinde'; //NO EFFECT !!!!
+    console.log(c1.firstName+" "+c1.lastName);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

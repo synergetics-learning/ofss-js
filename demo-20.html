@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <video controls id="v1" >
+        <!-- Sources are picked based on compatibility with web-browser -->
+        <source type="video/mp4" src="media/movie1.mp4" />
+    </video>
+
+    <audio controls id="a1">
+        <!-- Using a Hack:: Most videos also include "audio" so only audio would play from file !-->
+        <source src="media/movie1.mp4" type="audio/mpeg" />
+    </audio>
+
+    <input type="button" value="Show Video" onclick="showVideo()"/>
+    <input type="button" value="Show Audio" onclick="showAudio()"/>
+</body>
+
+<script>
+v1 = document.getElementById("v1");
+v1.style.display = 'none';
+
+a1 = document.getElementById("a1");
+a1.style.display = 'none';
+
+function showVideo(){
+    v1.style.display = (v1.style.display=='none')?'block':'none';
+}
+</script>
+</html>
