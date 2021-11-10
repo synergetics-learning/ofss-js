@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Demo 16 : Ajax !</title>
+    <script>
+    usList = new Array();    
+    window.onload = function(){
+        xreq1 = new XMLHttpRequest();
+        xreq1.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200 ){
+                resp = this.responseText;
+                //Convert the JSON String into JS Array Object
+                usList = [].concat(JSON.parse(resp));
+                renderTable();
+            }
+        };
+        xreq1.open("GET","https://jsonplaceholder.typicode.com/users/",false);
+        xreq1.send();
+    }
+
+    function renderTable(){
+        userList = document.getElementById("userList");
+        userList.innerHTML = "";
+        for(i=0;i<usList.length;i++){
+            user = usList[i];
+            row = "<tr onclick='loadDetails("+i+")'><td>"+user.id+"</td><td>"+user.name+"</td><td>"+user.email+"</td></tr>";
+            userList.innerHTML += row;
+        }
+    }
+    function loadDetails(i){
+        currentUser = usList[i];
+        //alert(currentUser.name);
+        document.getElementById("addr").innerHTML = JSON.stringify(currentUser.address) ;
+        document.getElementById("phone").innerHTML = currentUser.phone;
+        document.getElementById("cmp").innerHTML = currentUser.company.name;
+    }
+    </script>
+
+    <style>
+   
+    #details{
+        border: 1pt solid darkred;
+    }
+    tr {
+        vertical-align: top;
+    }
+    td {
+        padding: 5px;
+    }
+    
+
+    </style>
+</head>
+<body>
+    <table  cellspacing="0" border="0">
+        <tr>
+            <td>
+                  <!-- Nested Table for List of Users -->  
+                  <table>
+                    <thead>
+                        <tr>
+                            <td>User ID</td>
+                            <td>Username</td>
+                            <td>EMail</td>
+                        </tr>
+                    </thead>
+                    <tbody  id="userList">
+
+                    </tbody>
+                  </table>
+            </td>
+            <td>
+                <table id="details">
+                    <tr>
+                        <td>Address </td>
+                        <td id="addr"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td id="phone"></td>
+                    </tr>
+                    <tr>
+                        <td>Company </td>
+                        <td id="cmp"></td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

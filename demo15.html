@@ -8,7 +8,7 @@
     var xreq  = new XMLHttpRequest();
     xreq.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            resp = JSON.parse(xreq.responseText);
+            resp = JSON.parse(this.responseText);
             document.forms[0].ip.value = resp.ip;
         }else{
             console.log("Ready State : "+this.readyState +", HTTP Response: "+this.status);
